@@ -873,6 +873,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 357501118872274073, guid: 016093710a27b294c82a50c6d077a23e,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 357501118872274073, guid: 016093710a27b294c82a50c6d077a23e,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 357501118872274073, guid: 016093710a27b294c82a50c6d077a23e,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5805807550039953239, guid: 016093710a27b294c82a50c6d077a23e,
         type: 3}
       propertyPath: m_LocalPosition.x
