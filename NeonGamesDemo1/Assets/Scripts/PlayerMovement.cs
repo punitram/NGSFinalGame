@@ -4,8 +4,7 @@ using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-
-    //Assingables
+ //Assingables
     public Transform playerCam;
     public Transform orientation;
     
