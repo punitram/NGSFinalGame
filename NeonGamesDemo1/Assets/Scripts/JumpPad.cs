@@ -5,8 +5,8 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int forceUp = 800;
-    public int forceForward = 300;
+    public int forceUp = 1;
+    public int forceForward = 1;
     void Start()
     {
         
