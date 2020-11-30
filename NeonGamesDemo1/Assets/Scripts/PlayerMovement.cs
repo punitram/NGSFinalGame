@@ -2,12 +2,15 @@
 
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
- //Assingables
+    //Assingables
     public Transform playerCam;
     public Transform orientation;
-    
+    public float deathThreshold;
+    private Vector3 spawnPoint;
+    public List<Checkpoint> checkpoints;
     //Other
     private Rigidbody rb;
 
@@ -21,7 +24,8 @@ public class PlayerMovement : MonoBehaviour {
     public float maxSpeed = 10;
     public bool grounded;
     public LayerMask whatIsGround;
-    
+    public LayerMask whatIsInteractable;
+
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
@@ -57,6 +61,8 @@ public class PlayerMovement : MonoBehaviour {
 
     
     private void FixedUpdate() {
+        if (transform.position.y < threshold)
+            transform.position = spawnPoint;
         Movement();
     }
 
@@ -79,6 +85,26 @@ public class PlayerMovement : MonoBehaviour {
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // check if close enough to a checkpoint
+            RaycastHit hit;
+            if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, 100f, whatIsInteractable))
+            {
+                Checkpoint checkpoint = hit.collider.GetComponent<Checkpoint>();
+                if (checkpoint != null)
+                {
+                    float distance = Vector3.Distance(playerCam.position, hit.point);
+                    if (distance <= checkpoint.radius)
+                    {
+                        // Display Prompt? 
+                        // Activate Checkpoint
+                        checkpoint.Activate();
+                    }
+                }
+            }
+        }
     }
 
     private void StartCrouch() {
@@ -89,6 +115,14 @@ public class PlayerMovement : MonoBehaviour {
                 rb.AddForce(orientation.transform.forward * slideForce);
             }
         }
+    }
+
+    public void setSpawnPoint(Checkpoint c)
+    {
+        
+        Vector3 loc = c.transform.position;
+        ++loc.x;//shift the player to the left of the checkpoint
+        spawnPoint = loc;
     }
 
     private void StopCrouch() {

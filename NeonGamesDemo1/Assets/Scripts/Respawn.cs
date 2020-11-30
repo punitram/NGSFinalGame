@@ -5,10 +5,23 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public float threshold;
-
+    private Vector3 spawnPoint;
+    public List<Checkpoint> checkpoints;
+    private void Awake()
+    {
+        spawnPoint = new Vector3(6, 12, 0);
+        checkpoints = new List<Checkpoint>();
+    }
     void FixedUpdate ()
     {
         if (transform.position.y < threshold)
-            transform.position = new Vector3(7, 12, 0);
+            transform.position = spawnPoint;
+    }
+
+    public void setSpawnPoint(Vector3 loc)
+    {
+        //shift the player to the left of the checkpoint
+        ++loc.x;
+        spawnPoint = loc;
     }
 }
