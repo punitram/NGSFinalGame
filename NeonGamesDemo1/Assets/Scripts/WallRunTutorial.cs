@@ -142,6 +142,10 @@ public class WallRunTutorial : MonoBehaviour
     public float climbForce, maxClimbSpeed;
     public LayerMask whatIsLadder;
     bool alreadyStoppedAtLadder;
+    // Speed Boost
+    public float boostModifier;
+    private float oldMoveSpeed;
+    public float boostLength = 5;
 
     void Awake()
     {
@@ -152,6 +156,7 @@ public class WallRunTutorial : MonoBehaviour
     void Start()
     {
         playerScale = transform.localScale;
+        oldMoveSpeed = moveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         spawnPoint = playerCam.position;
@@ -687,4 +692,19 @@ public class WallRunTutorial : MonoBehaviour
     {
         grounded = false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "SpeedBoost" && moveSpeed == oldMoveSpeed)
+        {
+            moveSpeed *= boostModifier;
+            Invoke("revertMoveSpeed", boostLength);
+        }
+    }
+
+    private void revertMoveSpeed()
+    {
+        moveSpeed = oldMoveSpeed;
+    }
+    
 }
