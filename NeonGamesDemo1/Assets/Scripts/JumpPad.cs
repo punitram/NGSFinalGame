@@ -23,7 +23,7 @@ public class JumpPad : MonoBehaviour
         GameObject block = collision.gameObject;
         Rigidbody rb = block.GetComponent<Rigidbody>();
         rb.AddForce(Vector3.up * forceUp);
-        rb.AddForce(Vector3.forward * forceForward);
+        rb.AddForce(this.transform.forward * forceForward);
 
     }
 }

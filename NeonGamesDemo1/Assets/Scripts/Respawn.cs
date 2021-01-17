@@ -5,11 +5,11 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public float threshold;
-    private Vector3 spawnPoint;
+    public Vector3 spawnPoint;
     public List<Checkpoint> checkpoints;
     private void Awake()
     {
-        spawnPoint = new Vector3(6, 12, 0);
+        //spawnPoint = new Vector3();
         checkpoints = new List<Checkpoint>();
     }
     void FixedUpdate ()

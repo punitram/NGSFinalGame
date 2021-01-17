@@ -1,7 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
-using System.Collections.Generic;
+
 public class WallRunTutorial : MonoBehaviour
 {
     /// <summary>
@@ -59,11 +59,6 @@ public class WallRunTutorial : MonoBehaviour
     /// Wall run done, here comes the rest of the movement script
     /// </summary>
 
-    // Checkpoint Stuff
-    public float deathThreshold;
-    private Vector3 spawnPoint;
-    public List<Checkpoint> checkpoints;
-    public LayerMask whatIsInteractable;
 
     //Assingables
     public Transform playerCam;
@@ -142,10 +137,6 @@ public class WallRunTutorial : MonoBehaviour
     public float climbForce, maxClimbSpeed;
     public LayerMask whatIsLadder;
     bool alreadyStoppedAtLadder;
-    // Speed Boost
-    public float boostModifier;
-    private float oldMoveSpeed;
-    public float boostLength = 5;
 
     void Awake()
     {
@@ -156,17 +147,13 @@ public class WallRunTutorial : MonoBehaviour
     void Start()
     {
         playerScale = transform.localScale;
-        oldMoveSpeed = moveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        spawnPoint = playerCam.position;
     }
 
 
     private void FixedUpdate()
     {
-        if (transform.position.y < threshold)
-            transform.position = spawnPoint;
         Movement();
     }
 
@@ -177,14 +164,6 @@ public class WallRunTutorial : MonoBehaviour
         CheckForWall();
         SonicSpeed();
         WallRunInput();
-    }
-
-    public void setSpawnPoint(Checkpoint c)
-    {
-
-        Vector3 loc = c.transform.position;
-        ++loc.x;//shift the player to the left of the checkpoint
-        spawnPoint = loc;
     }
 
     /// <summary>
@@ -209,25 +188,7 @@ public class WallRunTutorial : MonoBehaviour
             Jump();
             doubleJumpsLeft--;
         }
-        // Interacting with Checkpoint
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, 50f, whatIsInteractable))
-            {
-                Checkpoint cp = hit.collider.GetComponent<Checkpoint>();
-                if (cp != null)
-                {
-                    float distance = Vector3.Distance(playerCam.position, cp.location);
-                    if (distance <= cp.radius)
-                    {
-                        
-                        // Activate Checkpoint
-                        cp.Interact();
-                    }
-                }
-            }
-        }
+
         //Dashing
         if (Input.GetKeyDown(KeyCode.W) && wTapTimes <= 1)
         {
@@ -692,19 +653,4 @@ public class WallRunTutorial : MonoBehaviour
     {
         grounded = false;
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "SpeedBoost" && moveSpeed == oldMoveSpeed)
-        {
-            moveSpeed *= boostModifier;
-            Invoke("revertMoveSpeed", boostLength);
-        }
-    }
-
-    private void revertMoveSpeed()
-    {
-        moveSpeed = oldMoveSpeed;
-    }
-    
 }
