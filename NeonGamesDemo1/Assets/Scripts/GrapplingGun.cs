@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GrapplingGun : MonoBehaviour {
 
@@ -21,6 +22,8 @@ public class GrapplingGun : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
+            //if (EventSystem.current.IsPointerOverGameObject())
+                //return;
             StartGrapple();
         }
         else if (Input.GetMouseButtonUp(0)) {

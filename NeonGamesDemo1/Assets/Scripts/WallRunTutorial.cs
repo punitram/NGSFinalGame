@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WallRunTutorial : MonoBehaviour
 {
@@ -188,6 +189,10 @@ public class WallRunTutorial : MonoBehaviour
             Jump();
             doubleJumpsLeft--;
         }
+
+        //Going to main menu
+        if (Input.GetKeyDown(KeyCode.H))
+            SceneManager.LoadScene("MainMenu");
 
         //Dashing
         if (Input.GetKeyDown(KeyCode.W) && wTapTimes <= 1)
