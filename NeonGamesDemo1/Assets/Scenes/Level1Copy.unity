@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5013141, g: 0.29488304, b: 0.4730438, a: 1}
+  m_IndirectSpecularColor: {r: 0.5013154, g: 0.29488352, b: 0.4730451, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1820,8 +1820,8 @@ GameObject:
   - component: {fileID: 142401182}
   - component: {fileID: 142401183}
   m_Layer: 8
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Moving Platform 1
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1924,7 +1924,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7be4dd96084d2478297fda54561f2d1c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -14533,6 +14533,11 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 357501118872274073, guid: 016093710a27b294c82a50c6d077a23e,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2.7
+      objectReference: {fileID: 0}
     - target: {fileID: 357501118872274074, guid: 016093710a27b294c82a50c6d077a23e,
         type: 3}
       propertyPath: m_TagString
@@ -15251,8 +15256,8 @@ GameObject:
   - component: {fileID: 1500079264}
   - component: {fileID: 1500079263}
   m_Layer: 8
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Moving Platform 2
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
