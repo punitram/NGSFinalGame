@@ -7,6 +7,7 @@ public class JumpPad : MonoBehaviour
     // Start is called before the first frame update
     public int forceUp = 1;
     public int forceForward = 1;
+    public AudioSource bounce;
     void Start()
     {
         
@@ -24,6 +25,6 @@ public class JumpPad : MonoBehaviour
         Rigidbody rb = block.GetComponent<Rigidbody>();
         rb.AddForce(Vector3.up * forceUp);
         rb.AddForce(this.transform.forward * forceForward);
-
+        bounce.Play();
     }
 }

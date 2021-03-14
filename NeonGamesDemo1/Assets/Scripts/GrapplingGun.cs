@@ -15,6 +15,7 @@ public class GrapplingGun : MonoBehaviour {
     public float springAmount = 4.5f;
     public float damperAmount = 7f;
     public float massScale = 4.5f;
+    public AudioSource snap;
 
     void Awake() {
         lr = GetComponent<LineRenderer>();
@@ -25,6 +26,7 @@ public class GrapplingGun : MonoBehaviour {
             //if (EventSystem.current.IsPointerOverGameObject())
                 //return;
             StartGrapple();
+            snap.Play();
         }
         else if (Input.GetMouseButtonUp(0)) {
             StopGrapple();
@@ -41,7 +43,7 @@ public class GrapplingGun : MonoBehaviour {
     /// </summary>
     void StartGrapple() {
         RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable) && hit.collider.gameObject.tag != "Moving") {
+        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable)) {
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;

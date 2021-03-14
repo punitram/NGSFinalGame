@@ -16,6 +16,9 @@ public class WallRunTutorial : MonoBehaviour
     bool isWallRunning;
     public float maxWallRunCameraTilt, wallRunCameraTilt;
 
+    //Music
+    public AudioSource slide;
+
     private void WallRunInput() //make sure to call in void Update
     {
         //Wallrun
@@ -27,7 +30,7 @@ public class WallRunTutorial : MonoBehaviour
         rb.useGravity = false;
         isWallRunning = true;
         allowDashForceCounter = false;
-
+        slide.Play();
         if (rb.velocity.magnitude <= maxWallSpeed)
         {
             rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
@@ -139,6 +142,9 @@ public class WallRunTutorial : MonoBehaviour
     public LayerMask whatIsLadder;
     bool alreadyStoppedAtLadder;
 
+    //Music
+    public AudioSource bounce;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -178,15 +184,16 @@ public class WallRunTutorial : MonoBehaviour
         crouching = Input.GetKey(KeyCode.LeftShift);
 
         //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-            StopCrouch();
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+            //StartCrouch();
+        //if (Input.GetKeyUp(KeyCode.LeftShift))
+            //StopCrouch();
 
         //Double Jumping
         if (Input.GetButtonDown("Jump") && !grounded && doubleJumpsLeft >= 1)
         {
             Jump();
+            bounce.Play();
             doubleJumpsLeft--;
         }
 
@@ -316,6 +323,7 @@ public class WallRunTutorial : MonoBehaviour
             //Add jump forces
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
+            bounce.Play();
 
             //If jumping while falling, reset y velocity.
             Vector3 vel = rb.velocity;
@@ -334,6 +342,7 @@ public class WallRunTutorial : MonoBehaviour
             rb.AddForce(orientation.forward * jumpForce * 1f);
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
+            bounce.Play();
 
             //Reset Velocity
             rb.velocity = Vector3.zero;
