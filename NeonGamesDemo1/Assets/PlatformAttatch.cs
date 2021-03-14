@@ -6,7 +6,7 @@ public class PlatformAttatch : MonoBehaviour
 {
     public GameObject Player;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
         {
