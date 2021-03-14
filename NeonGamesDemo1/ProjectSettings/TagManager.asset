@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
-  - Moving
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - Ladder
   - Interactable
   - Glow
-  - 
+  - Moving
   - 
   - 
   - 

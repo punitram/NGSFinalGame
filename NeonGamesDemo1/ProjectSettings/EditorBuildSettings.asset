@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/1-grapplingTutorial-RH.unity
-    guid: e5ac9d6d1b21047faaa990c5e06697ba
-  - enabled: 0
-    path: Assets/Scenes/2-jumpPadTutorial-RH.unity
-    guid: 9b4f93de5123243d2903c216630bf8f6
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 7855546cc318b4abda950651e511a644
@@ -18,12 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleSceneCopy.unity
     guid: c8c694cbc07124de2b0e3bbc4971232b
   - enabled: 1
+    path: Assets/Scenes/Level2Copy.unity
+    guid: 7b0945fe1cfd4428ea92bdf7eafcf5c6
+  - enabled: 1
     path: Assets/Scenes/Level1Copy.unity
     guid: b69b251b6af044aeebbdbc2dce5fcc6b
   - enabled: 1
-    path: Assets/Scenes/Level2Copy.unity
-    guid: 7b0945fe1cfd4428ea92bdf7eafcf5c6
-  - enabled: 0
+    path: Assets/Scenes/1-grapplingTutorial-RH.unity
+    guid: e5ac9d6d1b21047faaa990c5e06697ba
+  - enabled: 1
+    path: Assets/Scenes/2-jumpPadTutorial-RH.unity
+    guid: 9b4f93de5123243d2903c216630bf8f6
+  - enabled: 1
     path: Assets/Scenes/3-TowerLevel-RH.unity
     guid: 67ee0147dabd047d8a32304b6ac9781f
   m_configObjects: {}
